@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Speech Recognition in Python</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/index.css') }}" />
+</head>
+<body>
+<div id="speechContainer">
+    <h1>Upload a new mp3 file</h1>
+
+    <form method="post" enctype="multipart/form-data">
+        <input type="file" name="file"/>
+        <br>
+		<label for="cars">Choose an output language:</label>
+		<select id="olang" name="olang" size="3">
+		  <option value="PT_BR">Hindi</option>
+		  <option value="de">English</option>
+		  <option value="fr">Bhojpuri</option>
+		  <option value="es">Haryanvi</option>
+		</select>
+		<br>
+        <input type="submit" id="submitButton" value="Transcribe"/>
+        <br>
+    </form>
+    
+	{% if transcript != "" %}
+		<div id="speechTranscriptionContainer">
+			<h1> File: {{fname}}</h1>
+			<h1>Original</h1>
+			<p id="speechText">{{result_speech2text}}</p>
+			<h1>Translated into: {{olang}}</h1>
+			<p id="speechText">{{transcript}}</p>
+		</div>
+	{% endif %}
+</div>
+
+</body>
+</html>
